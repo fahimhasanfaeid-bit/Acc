@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Gaming Zone - Contact Sync</title>
+    <style>
+        /* CSS Design */
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #0f0f1a; color: #ffffff;
+            text-align: center;
+        }
+
+        nav {
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            padding: 15px; position: sticky; top: 0; z-index: 100;
+        }
+
+        nav button {
+            background: transparent; border: none; color: white;
+            font-size: 18px; margin: 0 10px; cursor: pointer; font-weight: bold;
+        }
+
+        .page { display: none; padding: 50px 20px; min-height: 80vh; }
+        .active { display: block; animation: fadeIn 0.5s; }
+
+        h1 { color: #00ffcc; text-transform: uppercase; }
+
+        .btn-next {
+            padding: 12px 30px; font-size: 18px; border: none; border-radius: 50px;
+            cursor: pointer; margin-top: 30px; font-weight: bold;
+            background: linear-gradient(45deg, #ff0099, #493240); color: white;
+        }
+
+        /* Form Style */
+        .contact-form {
+            background: #1a1a2e; padding: 30px; border-radius: 15px;
+            display: inline-block; border: 1px solid #2575fc; width: 90%; max-width: 400px;
+        }
+
+        input, textarea {
+            width: 100%; padding: 12px; margin: 10px 0; border-radius: 5px;
+            border: none; background: #222; color: white; box-sizing: border-box;
+        }
+
+        input:focus { outline: 2px solid #00ffcc; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <button onclick="showPage('page1')">Home</button>
+        <button onclick="showPage('page2')">Games</button>
+        <button onclick="showPage('page3')">News</button>
+        <button onclick="showPage('page4')">Gallery</button>
+        <button onclick="showPage('page5')">Contact</button>
+    </nav>
+
+    <div id="page1" class="page active">
+        <h1>🎮 Welcome Gamer</h1>
+        <p>Explore and send your details from the contact page.</p>
+        <button class="btn-next" onclick="showPage('page5')">Go to Contact Page directly ➡️</button>
+    </div>
+
+    <div id="page2" class="page"><h1>🔥 Top Games</h1><button class="btn-next" onclick="showPage('page3')">Next</button></div>
+    <div id="page3" class="page"><h1>📰 Latest News</h1><button class="btn-next" onclick="showPage('page4')">Next</button></div>
+    <div id="page4" class="page"><h1>📸 Gallery</h1><button class="btn-next" onclick="showPage('page5')">Next</button></div>
+
+    <div id="page5" class="page">
+        <h1>📞 Send Your Name</h1>
+        <p>আপনার নাম লিখুন, এটি সরাসরি ফাহিমের ইমেইলে চলে যাবে।</p>
+        
+        <form action="https://formspree.io/f/fahimhasanfaeid@gmail.com" method="POST" class="contact-form">
+            <label>আপনার নাম (Name):</label>
+            <input type="text" name="visitor_name" placeholder="Enter your name" required>
+            
+            <label>আপনার ইমেইল (Email):</label>
+            <input type="email" name="_replyto" placeholder="Your email (optional)">
+            
+            <label>মেসেজ (Message):</label>
+            <textarea name="message" rows="4" placeholder="Write something..."></textarea>
+            
+            <input type="hidden" name="_subject" value="New Gaming Site Submission!">
+
+            <button type="submit" class="btn-next" style="width: 100%;">সাবমিট করুন</button>
+        </form>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            var pages = document.querySelectorAll('.page');
+            pages.forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+    </script>
+
+</body>
+</html>
